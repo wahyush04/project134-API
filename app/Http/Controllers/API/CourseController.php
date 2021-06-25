@@ -71,8 +71,7 @@ class CourseController extends Controller
         $validasi = Validator::make($request->all(), [
             "name" => "required",
             "description" => "required",
-            "price" => "required",
-            "institution_id" => "required|integer"
+            "id" => "required|integer"
         ]);
 
         if ($validasi->passes()) {
@@ -101,8 +100,7 @@ class CourseController extends Controller
             $validasi = Validator::make($request->all(), [
                 "name" => "required",
                 "description" => "required",
-                "price" => "required",
-                "institution_id" => "required|integer"
+                "id" => "required|integer"
             ]);
 
             if ($validasi->passes()) {
