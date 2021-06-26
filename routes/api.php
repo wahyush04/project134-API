@@ -20,16 +20,15 @@ Route::post('kursus', 'API\CourseController@store');
 Route::patch('kursus/{id}', 'API\CourseController@update');
 
 
-//Route Institution
-Route::get('institution', 'API\InstitutionController@index');
+Route::get('lembaga', 'API\InstitutionController@index');
 
-Route::get('institution/{data}', 'API\InstitutionController@show');
+Route::get('lembaga/{data}', 'API\InstitutionController@show');
 
 // Route Hapus Data
-Route::delete('institution/{data}', 'API\InstitutionController@destroy');
+Route::delete('lembaga/{data}', 'API\InstitutionController@destroy');
 
 // Route Tambah Data
-Route::post('institution', 'API\InstitutionController@store');
+Route::post('lembaga', 'API\InstitutionController@store');
 
-// Route Update Data        
-Route::patch('institution/{id}', 'API\InstitutionController@update');
+// Route Update Data
+Route::patch('lembaga/{id}', 'API\InstitutionController@update');

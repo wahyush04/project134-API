@@ -30,4 +30,7 @@ Route::post('/kursus/store', 'CourseController@store')->name('course.store');
 // route untuk institusi
 Route::get('/lembaga', 'InstitutionController@index');
 
-
+// Route UTS
+Route::get('/kelompoka', 'AController@index');
+Route::get('/kelompoka/create', 'AController@create')->name('create');
+Route::post('kelompoka/store', 'AController@store')->name('store');

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Institution;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Validator;
 
 class InstitutionController extends Controller
@@ -38,10 +39,10 @@ class InstitutionController extends Controller
     }
 
     // cara 1 menggunakan dependency injection
-//    public function destroy(Course $data)
-//    {
-//        $data->delete();
-//    }
+    //    public function destroy(Course $data)
+    //    {
+    //        $data->delete();
+    //    }
 
     // cara 2 cara lengkap
     public function destroy($data)
@@ -63,14 +64,13 @@ class InstitutionController extends Controller
 
     public function store(Request $request)
     {
-//        Cara 1
-//        Course::create($request->all());
-//        Cara 2
+        //        Cara 1
+        //        Course::create($request->all());
+        //        Cara 2
 
         $validasi = Validator::make($request->all(), [
             "name" => "required",
-            "description" => "required"
-
+            "description" => "required",
         ]);
 
         if ($validasi->passes()) {
@@ -98,7 +98,9 @@ class InstitutionController extends Controller
 
             $validasi = Validator::make($request->all(), [
                 "name" => "required",
-                "description" => "required"
+                "description" => "required",
+                "price" => "required",
+                "institution_id" => "required|integer"
             ]);
 
             if ($validasi->passes()) {

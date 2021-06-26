@@ -11,7 +11,7 @@ class CourseController extends Controller
     {
         // select * from course
 //        $courses = Course::all();
-        $courses = Course::with('institution')->get();
+        $courses = Course::with('lembaga')->get();
 //        dd($courses);
         return view('course.index', compact('courses'));
     }

@@ -24,8 +24,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $course->name }}</td>
                             <td>{{ $course->description }}</td>
-                            <td>{{ $course->institution->name }}</td>
-                            <td>{{ $course->institution->description }}</td>
+                            <td>{{ $course->lembaga->name }}</td>
+                            <td>{{ $course->lembaga->description }}</td>
                             <td>Edit | Hapus</td>
                         </tr>
                     @endforeach
