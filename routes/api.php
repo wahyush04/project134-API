@@ -32,3 +32,19 @@ Route::post('lembaga', 'API\InstitutionController@store');
 
 // Route Update Data
 Route::patch('lembaga/{id}', 'API\InstitutionController@update');
+
+
+
+
+Route::get('enrollment', 'API\EnrollmentController@index');
+
+Route::get('enrollment/{data}', 'API\EnrollmentController@show');
+
+// Route Hapus Data
+Route::delete('enrollment/{data}', 'API\EnrollmentController@destroy');
+
+// Route Tambah Data
+Route::post('enrollment', 'API\EnrollmentController@store');
+
+// Route Update Data
+Route::patch('enrollment/{id}', 'API\EnrollmentController@update');

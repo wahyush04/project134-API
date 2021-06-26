@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Course;
+use App\Enrollment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
 
-class CourseController extends Controller
+class EnrollmentController extends Controller
 {
     public function index()
     {
-        return Course::with('lembaga')->get();
+        return Enrollment::with('course','user')->get();
     }
 
     // Cara 1
@@ -23,7 +23,7 @@ class CourseController extends Controller
     // cara 2
     public function show($data)
     {
-        $detail = Course::where('id', $data)->first();
+        $detail = Enrollment::where('id', $data)->first();
 
         if (empty($detail)) {
             return response()->json([
@@ -39,15 +39,15 @@ class CourseController extends Controller
     }
 
     // cara 1 menggunakan dependency injection
-//    public function destroy(Course $data)
-//    {
-//        $data->delete();
-//    }
+    //    public function destroy(Course $data)
+    //    {
+    //        $data->delete();
+    //    }
 
     // cara 2 cara lengkap
     public function destroy($data)
     {
-        $detail = Course::where('id', $data)->first();
+        $detail = Enrollment::where('id', $data)->first();
 
         if (empty($detail)) {
             return response()->json([
@@ -64,21 +64,20 @@ class CourseController extends Controller
 
     public function store(Request $request)
     {
-//        Cara 1
-//        Course::create($request->all());
-//        Cara 2
+        //        Cara 1
+        //        Course::create($request->all());
+        //        Cara 2
 
         $validasi = Validator::make($request->all(), [
-            "name" => "required",
-            "description" => "required",
-            "price" => "required",
-            "institution_id" => "required|integer"
+            "status" => "required",
+            "user_id" => "required",
+            "course_id" => "required",
         ]);
 
         if ($validasi->passes()) {
             return response()->json([
                 'pesan' => "Data Berhasil disimpan",
-                'data' => Course::create($request->all())
+                'data' => Enrollment::create($request->all())
             ]);
         }
         return response()->json([
@@ -89,7 +88,7 @@ class CourseController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = Course::where('id', $id)->first();
+        $data = Enrollment::where('id', $id)->first();
 
         if (empty($data)) {
             return response()->json([
@@ -99,10 +98,9 @@ class CourseController extends Controller
         } else {
 
             $validasi = Validator::make($request->all(), [
-                "name" => "required",
-                "description" => "required",
-                "price" => "required",
-                "institution_id" => "required|integer"
+                "status" => "required",
+                "user_id" => "required",
+                "course_id" => "required",
             ]);
 
             if ($validasi->passes()) {
@@ -118,5 +116,4 @@ class CourseController extends Controller
             }
         }
     }
-
 }
